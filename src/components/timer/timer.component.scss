@@ -1,0 +1,39 @@
+@import "../../styles.scss";
+
+.timer-div{
+    width: 400px;
+    height: 67px;
+    background-color: $color-background-secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.timer-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    color: $color-text-options;
+}
+
+.timer-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 120px;
+}
+
+.timer-item-active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-accessories-red;
+    border-radius: 20px;
+}
+
+.timer-paragraph{
+    font-weight: 700;
+}
