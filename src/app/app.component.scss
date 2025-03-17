@@ -1,0 +1,16 @@
+@import '../styles.scss';
+
+main{
+    background-color: $color-background-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: $font-family;
+}
+
+h1{
+    font-size: 32px;
+    color: $color-text;
+}
