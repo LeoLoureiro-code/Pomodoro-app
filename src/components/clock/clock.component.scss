@@ -1,17 +1,5 @@
 @import "../../styles.scss";
 
-.clock-div {
-  height: 410px;
-  width: 410px;
-  border-radius: 50%;
-  background-color: $color-background-secondary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 100px 5px #d7e0ff7c;
-  position: relative;
-}
-
 .counter {
   width: 100%;
   height: 100%;
@@ -22,28 +10,79 @@
   position: relative;
 }
 
-.counter::before {
-  content: "";
+.progress-bar {
+  background-color: $color-accessories-red;
+  height: 410px;
+  width: 410px;
+  border-radius: 50%;
+  box-shadow: 0 0 100px 5px #d7e0ff7c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.progress-fill {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 20px solid transparent;
-  border-top-color: $color-accessories-red;
-  transform: rotate(0deg);
-  transition: transform 1s linear;
+  background: conic-gradient(
+    lighten($color-accessories-red, 20%) 0deg,
+    transparent 0deg
+  );
+  animation: circularFill 3s linear infinite;
 }
 
 
+@keyframes circularFill {
+  0% {
+    background: conic-gradient(
+      lighten($color-accessories-red, 20%) 0deg,
+      transparent 0deg
+    );
+  }
+  25% {
+    background: conic-gradient(
+      lighten($color-accessories-red, 20%) 90deg,
+      transparent 90deg
+    );
+  }
+  50% {
+    background: conic-gradient(
+      lighten($color-accessories-red, 20%) 180deg,
+      transparent 180deg
+    );
+  }
+  75% {
+    background: conic-gradient(
+      lighten($color-accessories-red, 20%) 270deg,
+      transparent 270deg
+    );
+  }
+  100% {
+    background: conic-gradient(
+      lighten($color-accessories-red, 20%) 360deg,
+      transparent 360deg
+    );
+  }
+}
+
 .clock {
+  height: 370px;
+  width: 370px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: $color-text;
+  background-color: $color-background-primary;
   position: absolute;
 }
 
 .clock-numbers {
-  font-size: 50px;
+  font-size: 80px;
 }
