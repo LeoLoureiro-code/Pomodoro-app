@@ -22,8 +22,10 @@
   <div class="progress-bar">
     <div class="progress-fill"></div>
     <div class="clock">
-      <p class="clock-numbers">00:00</p>
-      <button class="btn">Start</button>
+      <div class="clock-time-div">
+        <span class="clock-time">{{timerMinutes}}</span>:<span class="clock-time">{{timerSeconds}}</span>
+      </div>
+      <button class="btn" (click)="Start()">Start</button>
     </div>
   </div>
 </div>
