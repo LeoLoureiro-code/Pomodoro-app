@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'clock',
@@ -7,21 +8,20 @@ import { Component } from '@angular/core';
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss'
 })
+
+
 export class ClockComponent {
 
-timeTest: number = 25;
+//Variables
+millisecondsInSecond:number = 1000;
+millisecondsInMinute:number = this.millisecondsInSecond * 60;
 
-timerMinutes: number = this.timeTest - 1;
-timerSeconds: number = 59;
+timerMinutes?:number;
+timerSeconds?:number;
 
-second: number = 1000;
-minutes: number = this.second * 60;
 
-Start(){
- 
-  setTimeout(function() {
-    
-}, 1000);
+
+
+Start(){ 
 }
-
 }
