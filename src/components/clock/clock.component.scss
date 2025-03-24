@@ -103,7 +103,7 @@
 
 .btn{
   height: 30px;
-  width: 100px;
+  text-align: center;
   background-color: transparent;
   border: none;
   letter-spacing: 1rem;
@@ -111,4 +111,9 @@
   font-size: 20px;
   margin-top: 1.5rem;
   cursor: pointer;
+}
+
+.pause-btn{
+  display: none;
+  text-align: center;
 }
