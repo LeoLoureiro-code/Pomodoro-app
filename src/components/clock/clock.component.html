@@ -25,7 +25,8 @@
       <div class="clock-time-div">
         <span class="clock-time">{{timerMinutes}}</span>:<span class="clock-time">{{timerSeconds}}</span>
       </div>
-      <button class="btn" (click)="Start()">Start</button>
+      <button class="btn pause-btn" (click)="pauseTimer()">PAUSE</button>
+      <button class="btn start-btn" (click)="startTimer()">START</button>
     </div>
   </div>
 </div>
