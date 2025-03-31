@@ -1,6 +1,14 @@
 @import "../../styles.scss";
 
 
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .timer-div{
   width: 400px;
   height: 67px;
@@ -26,6 +34,8 @@
   align-items: center;
   height: 48px;
   width: 120px;
+  transition: 1s ease-in-out;
+  border-radius: 20px;
 }
 
 .timer-item-active{
@@ -33,7 +43,6 @@
   justify-content: center;
   align-items: center;
   background-color: $color-accessories-red;
-  border-radius: 20px;
 }
 
 .clock-time-div{
