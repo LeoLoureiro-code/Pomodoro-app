@@ -1,33 +1,28 @@
 <section>
-<div class="timer-div">
-  <ol class="timer-list">
-      <li class="timer-item timer-item-active timer-pomodoro">
-          <p class="timer-paragraph">
-              pomodoro
-          </p>
+  <div class="timer-div">
+    <ol class="timer-list">
+      <li class="timer-item timer-pomodoro" [ngClass]="{'timer-item-active': currentSessionType === 'pomodoro'}">
+        <p class="timer-paragraph">Pomodoro</p>
       </li>
-      <li class="timer-item timer-short-break">
-          <p class="timer-paragraph">
-              short break
-          </p>
+      <li class="timer-item timer-short-break" [ngClass]="{'timer-item-active': currentSessionType === 'short-break'}">
+        <p class="timer-paragraph">Short Break</p>
       </li>
-      <li class="timer-item timer-long-break">
-          <p class="timer-paragraph">
-              long break
-          </p>
+      <li class="timer-item timer-long-break" [ngClass]="{'timer-item-active': currentSessionType === 'long-break'}">
+        <p class="timer-paragraph">Long Break</p>
       </li>
-  </ol>
-</div>
-<div class="clock-div">
-  <div class="progress-bar">
-    <div class="progress-fill"></div>
-    <div class="clock">
-      <div class="clock-time-div">
-        <span class="clock-time">{{timerMinutes}}</span>:<span class="clock-time">{{timerSeconds}}</span>
+    </ol>
+  </div>
+
+  <div class="clock-div">
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+      <div class="clock">
+        <div class="clock-time-div">
+          <span class="clock-time">{{ timerMinutes }}</span>:<span class="clock-time">{{ timerSeconds }}</span>
+        </div>
+        <button class="btn pause-btn" (click)="PauseTimer()">PAUSE</button>
+        <button class="btn start-btn" (click)="StartTimer()">START</button>
       </div>
-      <button class="btn pause-btn" (click)="PauseTimer()">PAUSE</button>
-      <button class="btn start-btn" (click)="StartTimer()">START</button>
     </div>
   </div>
-</div>
 </section>
