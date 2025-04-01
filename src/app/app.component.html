@@ -1,5 +1,11 @@
 <main>
+    <settings
+    [isVisible]="isModalVisible"
+    (closeModal)="CloseModal()"
+    >
+
+    </settings>
     <h1>POMODORO</h1>
     <clock></clock>
-    <img src="assets/icon-settings.svg" alt="settings icon">
+    <img src="assets/icon-settings.svg" alt="settings icon" (click)="OpenModal()">
 </main>
