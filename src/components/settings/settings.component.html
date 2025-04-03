@@ -7,16 +7,16 @@
             <h2>Time (Minutes)</h2>
             <ol class="timers-list">
                 <li class="timers-item">
-                    <h3>pomodoro</h3>
-                    <input type="number" name="pomodoro" id="pomodoro" value="25">
+                    <h3>Pomodoro</h3>
+                    <input type="number" [(ngModel)]="pomodoroInput" (change)="sendPomodoroTime()">
                 </li>
                 <li class="timers-item">
-                    <h3>short brake</h3>
-                    <input type="number" name="short" id="short" value="5">
+                    <h3>Short Break</h3>
+                    <input type="number" [(ngModel)]="shortBreakInput" (change)="sendShortBreakTime()">
                 </li>
                 <li class="timers-item">
-                    <h3>long brake</h3>
-                    <input type="number" name="long" id="long" value="15">
+                    <h3>Long Break</h3>
+                    <input type="number" [(ngModel)]="longBreakInput" (change)="sendLongBreakTime()">
                 </li>
             </ol>
             <hr>
