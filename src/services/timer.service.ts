@@ -5,29 +5,31 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TimerService {
+  private pomodoroTime = new BehaviorSubject<number>(25);
+  private shortBreakTime = new BehaviorSubject<number>(5);
+  private longBreakTime = new BehaviorSubject<number>(15);
 
-
-  private pomodoroTimer = new BehaviorSubject(0);
-  currentPomodoroTimer = this.pomodoroTimer.asObservable();
-
-  private shortBreakTimer = new BehaviorSubject(0);
-  currentShortBreakTimer = this.shortBreakTimer.asObservable();
-
-  private longBreakTimer = new BehaviorSubject(0);
-  currentLongBreakTimer = this.longBreakTimer.asObservable();
-
-  constructor() { }
-
-  UpdatePomodoroTimer(newPomodoroTimer:number){
-    this.pomodoroTimer.next(newPomodoroTimer);
+  getPomodoroTime() {
+    return this.pomodoroTime.asObservable();
   }
 
-  UpdateShortBreakTimer(newShortBreakTimer:number){
-    this.shortBreakTimer.next(newShortBreakTimer);
+  getShortBreakTime() {
+    return this.shortBreakTime.asObservable();
   }
 
-  UpdateLongBreakTimer(newLongBreakTimer:number){
-    this.longBreakTimer.next(newLongBreakTimer);
+  getLongBreakTime() {
+    return this.longBreakTime.asObservable();
   }
 
+  setPomodoroTime(time: number) {
+    this.pomodoroTime.next(time);
+  }
+
+  setShortBreakTime(time: number) {
+    this.shortBreakTime.next(time);
+  }
+
+  setLongBreakTime(time: number) {
+    this.longBreakTime.next(time);
+  }
 }
