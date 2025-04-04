@@ -1,7 +1,9 @@
 <div class="modal-wrapper" *ngIf="isVisible">
     <section class="modal">
-        <h1>Settings</h1>
-        <button (click)="onClose()">X</button>
+        <div class="title-div">
+            <h1>Settings</h1>
+            <button (click)="onClose()">X</button>
+        </div>
         <hr>
         <div class="timers-div">
             <h2>Time (Minutes)</h2>
@@ -20,14 +22,14 @@
                 </li>
             </ol>
             <hr>
-            <div class="colors-div">
-                <h2>Color</h2>
-            </div>
-            <ol class="colors-list">
-                <li class="colors-item"></li>
-                <li class="colors-item"></li>
-                <li class="colors-item"></li>
-            </ol>
         </div>
+        <div class="colors-div">
+            <h2>Color</h2>
+        </div>
+        <ol class="colors-list">
+            <li class="colors-item"></li>
+            <li class="colors-item"></li>
+            <li class="colors-item"></li>
+        </ol>
     </section>
 </div>
