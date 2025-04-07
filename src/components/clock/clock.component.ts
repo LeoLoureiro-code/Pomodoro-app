@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
@@ -10,14 +10,16 @@ import { TimerService } from '../../services/timer.service';
   styleUrl: './clock.component.scss'
 })
 export class ClockComponent implements OnInit {
-  constructor(private elementRef: ElementRef, private timerService: TimerService) {}
+  constructor(
+    private elementRef: ElementRef,
+    private timerService: TimerService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  // Timer Durations (User inputs from service)
   pomodoroTime: number = 25;
   shortBreakTime: number = 5;
   longBreakTime: number = 15;
 
-  // Convert minutes to seconds
   pomodoroTimeInSeconds: number = this.pomodoroTime * 60;
   shortBreakTimeInSeconds: number = this.shortBreakTime * 60;
   longBreakTimeInSeconds: number = this.longBreakTime * 60;
@@ -30,18 +32,18 @@ export class ClockComponent implements OnInit {
   isRunning: boolean = false;
 
   currentSessionType: 'pomodoro' | 'short-break' | 'long-break' = 'pomodoro';
-
   sessionSequence: { type: string; duration: number }[] = [];
 
-  // Buttons
   startBtn!: HTMLElement;
   pauseBtn!: HTMLElement;
+
+  selectedColor: string = '$color-accessories-red';
+  isPulsing: boolean = false;
 
   ngOnInit() {
     this.startBtn = this.elementRef.nativeElement.querySelector(".start-btn");
     this.pauseBtn = this.elementRef.nativeElement.querySelector(".pause-btn");
 
-    // Get updated timer values from service
     this.timerService.getPomodoroTime().subscribe((pomodoroTime) => {
       this.pomodoroTime = pomodoroTime;
       this.updateSessionDurations();
@@ -57,17 +59,18 @@ export class ClockComponent implements OnInit {
       this.updateSessionDurations();
     });
 
+    this.timerService.getSelectedColor().subscribe((color) => {
+      this.selectedColor = color;
+    });
+
     this.DisplayTime();
   }
 
   updateSessionDurations() {
-    
-    // Convert minutes to seconds
     this.pomodoroTimeInSeconds = this.pomodoroTime * 60;
     this.shortBreakTimeInSeconds = this.shortBreakTime * 60;
     this.longBreakTimeInSeconds = this.longBreakTime * 60;
 
-    // Update session sequence
     this.sessionSequence = [
       { type: 'pomodoro', duration: this.pomodoroTimeInSeconds },
       { type: 'short-break', duration: this.shortBreakTimeInSeconds },
@@ -79,7 +82,6 @@ export class ClockComponent implements OnInit {
       { type: 'long-break', duration: this.longBreakTimeInSeconds },
     ];
 
-    // Reset to first session
     this.cycleIndex = 0;
     this.totalSeconds = this.sessionSequence[this.cycleIndex].duration;
     this.currentSessionType = this.sessionSequence[this.cycleIndex].type as any;
@@ -103,6 +105,11 @@ export class ClockComponent implements OnInit {
     const minutes = Math.floor(this.totalSeconds / 60);
     this.timerMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
     this.timerSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    this.isPulsing = true;
+    setTimeout(() => {
+      this.isPulsing = false;
+    }, 100);
   }
 
   StartTimer() {
@@ -128,6 +135,12 @@ export class ClockComponent implements OnInit {
 
     this.totalSeconds = this.sessionSequence[this.cycleIndex].duration;
     this.currentSessionType = this.sessionSequence[this.cycleIndex].type as any;
+
+    if (isPlatformBrowser(this.platformId)) {
+      const alarm = new Audio('assets/alarm.mp3');
+      alarm.play();
+    }
+
     this.UpdateCountDown();
   }
 }

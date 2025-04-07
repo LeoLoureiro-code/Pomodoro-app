@@ -1,13 +1,19 @@
 <section>
   <div class="timer-div">
     <ol class="timer-list">
-      <li class="timer-item timer-pomodoro" [ngClass]="{'timer-item-active': currentSessionType === 'pomodoro'}">
+      <li class="timer-item timer-pomodoro"
+          [ngClass]="{'timer-item-active': currentSessionType === 'pomodoro'}"
+          [ngStyle]="currentSessionType === 'pomodoro' ? {'background-color': selectedColor} : {}">
         <p class="timer-paragraph">Pomodoro</p>
       </li>
-      <li class="timer-item timer-short-break" [ngClass]="{'timer-item-active': currentSessionType === 'short-break'}">
+      <li class="timer-item timer-short-break"
+          [ngClass]="{'timer-item-active': currentSessionType === 'short-break'}"
+          [ngStyle]="currentSessionType === 'short-break' ? {'background-color': selectedColor} : {}">
         <p class="timer-paragraph">Short Break</p>
       </li>
-      <li class="timer-item timer-long-break" [ngClass]="{'timer-item-active': currentSessionType === 'long-break'}">
+      <li class="timer-item timer-long-break"
+          [ngClass]="{'timer-item-active': currentSessionType === 'long-break'}"
+          [ngStyle]="currentSessionType === 'long-break' ? {'background-color': selectedColor} : {}">
         <p class="timer-paragraph">Long Break</p>
       </li>
     </ol>
@@ -15,7 +21,7 @@
 
   <div class="clock-div">
     <div class="progress-bar">
-      <div class="progress-fill"></div>
+      <div class="progress-fill" [ngStyle]="{'background-color': selectedColor}" [class.pulse]="isPulsing"></div>
       <div class="clock">
         <div class="clock-time-div">
           <span class="clock-time">{{ timerMinutes }}</span>:<span class="clock-time">{{ timerSeconds }}</span>
