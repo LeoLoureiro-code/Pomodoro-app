@@ -9,6 +9,8 @@ export class TimerService {
   private shortBreakTime = new BehaviorSubject<number>(5);
   private longBreakTime = new BehaviorSubject<number>(15);
 
+  private selectedColor = new BehaviorSubject<string>("$color-accessories-red");
+
   getPomodoroTime() {
     return this.pomodoroTime.asObservable();
   }
@@ -19,6 +21,10 @@ export class TimerService {
 
   getLongBreakTime() {
     return this.longBreakTime.asObservable();
+  }
+  
+  getSelectedColor() {
+    return this.selectedColor.asObservable();
   }
 
   setPomodoroTime(time: number) {
@@ -31,5 +37,9 @@ export class TimerService {
 
   setLongBreakTime(time: number) {
     this.longBreakTime.next(time);
+  }
+
+  setSelectedColor(color: string) {
+    this.selectedColor.next(color);
   }
 }
