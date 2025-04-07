@@ -34,6 +34,18 @@ export class SettingsComponent {
     this.timerService.setLongBreakTime(this.longBreakInput);
   }
 
+  setRed() {
+    this.timerService.setSelectedColor('#F87070'); 
+  }
+  
+  setBlue() {
+    this.timerService.setSelectedColor('#70F3F8'); 
+  }
+  
+  setPurple() {
+    this.timerService.setSelectedColor('#D881F8'); 
+  }
+
   onClose() {
     this.isVisible = false;
     this.closeModal.emit();

@@ -21,7 +21,7 @@
     background-color: $color-modal;
     border-radius: 20px;
     padding: 3rem;
-    overflow: auto;
+    overflow:hidden;
     z-index: 2;
   }
 
@@ -40,10 +40,20 @@
     border: none;
     outline: none;
     color: $color-background-secondary;
+    cursor: pointer;
   }
 
   h1{
     font-size: 44px;
+    width: 100%;
+  }
+
+  h2{
+    margin-bottom: 1rem;
+  }
+
+  h3{
+    color: gray;
   }
 
   .timers-list{
@@ -58,9 +68,52 @@
 
   .timers-item{
     height: 70px;
-    width: 110px;
+    width: 140px;
 
     input{
       width: 100%;
+      height: 48px;
+      border-radius: 15px;
+      border: none;
+      outline: none;
+      padding: 1rem;
+      background-color: $color-text-options;
+      font-weight: 700;
+      font-size: 18px;
     }
   }
+
+.colors-div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.colors-list{
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  width: 200px;
+}
+
+.colors-item{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.actived{
+  border: 1px solid black;
+}
+
+.color-red{
+  background-color: $color-accessories-red;
+}
+
+.color-blue{
+  background-color: $color-accessories-blue;
+}
+
+.color-purple{
+  background-color: $color-accessories-purple;
+}

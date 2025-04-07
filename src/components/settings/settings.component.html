@@ -10,26 +10,26 @@
             <ol class="timers-list">
                 <li class="timers-item">
                     <h3>Pomodoro</h3>
-                    <input type="number" [(ngModel)]="pomodoroInput" (change)="sendPomodoroTime()">
+                    <input type="number" min="1" [(ngModel)]="pomodoroInput" (change)="sendPomodoroTime()">
                 </li>
                 <li class="timers-item">
                     <h3>Short Break</h3>
-                    <input type="number" [(ngModel)]="shortBreakInput" (change)="sendShortBreakTime()">
+                    <input type="number" min="1" [(ngModel)]="shortBreakInput" (change)="sendShortBreakTime()">
                 </li>
                 <li class="timers-item">
                     <h3>Long Break</h3>
-                    <input type="number" [(ngModel)]="longBreakInput" (change)="sendLongBreakTime()">
+                    <input type="number" min="1" [(ngModel)]="longBreakInput" (change)="sendLongBreakTime()">
                 </li>
             </ol>
             <hr>
         </div>
         <div class="colors-div">
             <h2>Color</h2>
+            <ol class="colors-list">
+                <li class="colors-item color-red actived" (click)="setRed()"></li>
+                <li class="colors-item color-blue" (click)="setBlue()"></li>
+                <li class="colors-item color-purple" (click)="setPurple()"></li>
+            </ol>
         </div>
-        <ol class="colors-list">
-            <li class="colors-item"></li>
-            <li class="colors-item"></li>
-            <li class="colors-item"></li>
-        </ol>
     </section>
 </div>
